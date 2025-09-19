@@ -13,7 +13,7 @@ if __name__ == "__main__":
         f"Starting {fast_app.title} on {fast_settings.host}:{fast_settings.port}"
     )
     uvicorn.run(
-        "main:fast_app",
+        "app.main:fast_app",
         host=fast_settings.host,
         port=fast_settings.port,
         reload=fast_settings.reload,
