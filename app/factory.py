@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.settings import fast_settings
+from .settings import fast_settings
 
 
 class AppFactory:
