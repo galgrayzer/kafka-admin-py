@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 
 from .settings import fast_settings
 
@@ -12,14 +11,11 @@ class AppFactory:
             description=fast_settings.description,
             version=fast_settings.version,
         )
-
-        # Add CORS middleware
-        app.add_middleware(
-            middleware_class=CORSMiddleware,
-            allow_origins=["*"],
-            allow_credentials=True,
-            allow_methods=["*"],
-            allow_headers=["*"],
-        )
-
+        AppFactory._include_routers(app)
         return app
+
+    @staticmethod
+    def _include_routers(app: FastAPI) -> None:
+        from .api import api_router
+
+        app.include_router(api_router)
