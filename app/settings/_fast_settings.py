@@ -2,7 +2,7 @@ from pydantic import Field, PositiveInt
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from os import getenv
 
-from src.models.enums import AppEnvironment
+from app.models.enums import AppEnvironment
 
 
 class FastSettings(BaseSettings):

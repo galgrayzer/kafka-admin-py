@@ -1,6 +1,6 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field, PositiveInt
-from src.models.enums import AppEnvironment
+from app.models.enums import AppEnvironment
 
 
 class AppSettings(BaseSettings):

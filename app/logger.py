@@ -1,6 +1,6 @@
 from loguru import logger
 
-from src.settings import logger_settings
+from app.settings import logger_settings
 
 logger.add(
     sink=logger_settings.sink,

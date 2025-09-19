@@ -1,7 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from pydantic import Field
 
-from src.models.enums import LoggerLevel
+from app.models.enums import LoggerLevel
 
 
 class LoggerSettings(BaseSettings):
