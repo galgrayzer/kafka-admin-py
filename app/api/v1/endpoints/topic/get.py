@@ -14,7 +14,6 @@ def get_topics(request: Request) -> list[str]:
     logger.bind(bootstrap_servers=bootstrap_servers).info(
         "Fetching all topics from Kafka Cluster"
     )
-
     try:
         topic_list = admin_client.list_topics().topics
         logger.bind(bootstrap_servers=bootstrap_servers).success(
@@ -25,4 +24,5 @@ def get_topics(request: Request) -> list[str]:
             f"Error fetching topics: {e}"
         )
         raise HTTPException(status_code=500, detail=str(e))
-    return list(topic_list.keys())
+
+    return list(topic_list)
