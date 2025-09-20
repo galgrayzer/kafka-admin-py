@@ -21,14 +21,14 @@ class KafkaClient:
         self._producer: SerializingProducer | None = None
         self._consumer: DeserializingConsumer | None = None
 
-    def get_admin_client(self, config: dict[str, str]) -> AdminClient:
+    def get_admin_client(self, config: dict[str, str] = {}) -> AdminClient:
         if self._admin_client is None:
             config.update(self._base_config)
             self._admin_client = AdminClient(config)
             logger.debug(f"Initialized new AdminClient with config: {config}")
         return self._admin_client
 
-    def get_producer(self, config: dict[str, str]) -> SerializingProducer:
+    def get_producer(self, config: dict[str, str] = {}) -> SerializingProducer:
         if self._producer is None:
             config.update(self._base_config)
             self._producer = SerializingProducer(config)
