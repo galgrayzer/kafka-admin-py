@@ -1,17 +1,27 @@
-from fastapi import APIRouter, Depends, Query
+from fastapi import APIRouter, Depends
 
 
-from app.api.v1.middlewares import extract_bootstrap_servers
+from app.api.v1.middlewares import (
+    extract_bootstrap_servers,
+    extract_kafka_credentials,
+    create_kafka_client,
+)
 
-
-def docs_bootstrap_servers(
-    bootstrap_servers: str = Query(..., description="Kafka bootstrap servers list"),
-) -> str:
-    return bootstrap_servers
-
+from app.api.v1.swagger_docs import (
+    docs_bootstrap_servers,
+    docs_kafka_password,
+    docs_kafka_username,
+)
 
 topic_router = APIRouter(
     prefix="/topic",
     tags=["topic"],
-    dependencies=[Depends(docs_bootstrap_servers), Depends(extract_bootstrap_servers)],
+    dependencies=[
+        Depends(docs_bootstrap_servers),
+        Depends(docs_kafka_username),
+        Depends(docs_kafka_password),
+        Depends(extract_bootstrap_servers),
+        Depends(extract_kafka_credentials),
+        Depends(create_kafka_client),
+    ],
 )

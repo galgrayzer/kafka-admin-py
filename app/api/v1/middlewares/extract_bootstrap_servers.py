@@ -7,7 +7,7 @@ from fastapi import HTTPException
 def extract_bootstrap_servers(request: Request) -> None:
     bootstrap_servers = request.query_params.get("bootstrap_servers")
     if bootstrap_servers:
-        request.state.bootstrap_server = bootstrap_servers
+        request.state.bootstrap_servers = bootstrap_servers
         logger.debug(f"Extracted bootstrap servers: {bootstrap_servers}")
     else:
         raise HTTPException(
