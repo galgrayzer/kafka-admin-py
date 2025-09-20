@@ -16,7 +16,7 @@ def get_topics(request: Request) -> list[str]:
     )
 
     try:
-        topic_list = admin_client.list_topics(timeout=10).topics
+        topic_list = admin_client.list_topics().topics
         logger.bind(bootstrap_servers=bootstrap_servers).success(
             "Fetched all topics successfully"
         )
