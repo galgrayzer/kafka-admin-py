@@ -13,11 +13,10 @@ from app.api.v1.swagger_docs import (
     docs_kafka_username,
 )
 
-from .endpoints import topic_router
+from .endpoints import topic_router, cluster_router
 
-v1_router = APIRouter(prefix="/v1")
-v1_router.include_router(
-    topic_router,
+v1_router = APIRouter(
+    prefix="/v1",
     dependencies=[
         Depends(docs_bootstrap_servers),
         Depends(docs_kafka_username),
@@ -27,5 +26,9 @@ v1_router.include_router(
         Depends(create_kafka_client),
     ],
 )
+
+# Include routers
+v1_router.include_router(topic_router)
+v1_router.include_router(cluster_router)
 
 __all__ = ["v1_router"]
