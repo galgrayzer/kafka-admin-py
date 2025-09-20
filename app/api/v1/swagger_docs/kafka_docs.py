@@ -3,7 +3,9 @@ from app.settings import kafka_settings
 
 
 def docs_bootstrap_servers(
-    bootstrap_servers: str = Query(None, description="Kafka bootstrap servers list"),
+    bootstrap_servers: str = Query(
+        "localhost:9092", description="Kafka bootstrap servers list"
+    ),
 ) -> str:
     return bootstrap_servers
 
