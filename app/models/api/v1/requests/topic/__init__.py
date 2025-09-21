@@ -1,4 +1,8 @@
 from .create_topic import CreateTopicRequest
-from .update_topic import IncreaseNumberOfPartitionsRequest
+from .update_topic import IncreaseNumberOfPartitionsRequest, AlterTopicConfigsRequest
 
-__all__ = ["CreateTopicRequest", "IncreaseNumberOfPartitionsRequest"]
+__all__ = [
+    "CreateTopicRequest",
+    "IncreaseNumberOfPartitionsRequest",
+    "AlterTopicConfigsRequest",
+]

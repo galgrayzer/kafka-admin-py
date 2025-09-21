@@ -24,4 +24,4 @@ def delete_topic(request: Request, topic_name: str) -> dict[str, str]:
         logger.error(f"Error deleting topic {topic_name}: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
-    return {"detail": f"Topic {topic_name} has been deleted"}
+    return {"message": f"Topic {topic_name} has been deleted"}
