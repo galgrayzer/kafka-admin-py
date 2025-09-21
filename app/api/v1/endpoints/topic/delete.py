@@ -7,7 +7,7 @@ from .topic_route import topic_router
 from app.logger import logger
 
 
-@topic_router.delete("/{topic_name}", summary="Delete topic")
+@topic_router.delete("/{topic_name}", summary="Delete a topic")
 def delete_topic(request: Request, topic_name: str) -> dict[str, str]:
     admin_client: AdminClient = request.state.kafka_client.get_admin_client()
     bootstrap_servers: str = request.state.bootstrap_servers
