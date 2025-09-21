@@ -14,8 +14,9 @@ def create_topic(
 ) -> dict[str, str]:
     admin_client: AdminClient = request.state.kafka_client.get_admin_client()
     bootstrap_servers: str = request.state.bootstrap_servers
+    logger.bind(bootstrap_servers=bootstrap_servers)
 
-    logger.bind(bootstrap_servers=bootstrap_servers).info(
+    logger.info(
         f"Creating topic '{topic_name}' with {create_topic_request.num_partitions} partitions "
         f"and replication factor {create_topic_request.replication_factor}"
     )
@@ -33,13 +34,9 @@ def create_topic(
 
     try:
         future.result()
-        logger.bind(bootstrap_servers=bootstrap_servers).success(
-            f"Topic '{topic_name}' created successfully"
-        )
+        logger.success(f"Topic '{topic_name}' created successfully")
     except KafkaException as e:
-        logger.bind(bootstrap_servers=bootstrap_servers).error(
-            f"Error creating topic '{topic_name}': {e}"
-        )
+        logger.error(f"Error creating topic '{topic_name}': {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
     return {"message": f"Topic '{topic_name}' created successfully"}
