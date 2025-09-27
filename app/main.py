@@ -1,10 +1,9 @@
-from fastapi import FastAPI
 import uvicorn
+from fastapi import FastAPI
 
 from .factory import AppFactory
-from .settings import fast_settings
-from .settings import app_settings
 from .logger import logger
+from .settings import app_settings, fast_settings
 
 fast_app: FastAPI = AppFactory.create_app()
 
