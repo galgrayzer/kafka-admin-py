@@ -1,20 +1,22 @@
-from fastapi import HTTPException, Request
-from confluent_kafka.admin import (
-    AdminClient,
-    NewPartitions,
-    ConfigResource,
-    ConfigEntry,
-    AlterConfigOpType,
-)
-from confluent_kafka import KafkaException
 from asyncio import Future
 
-from .topic_route import topic_router
+from confluent_kafka import KafkaException
+from confluent_kafka.admin import (
+    AdminClient,
+    AlterConfigOpType,
+    ConfigEntry,
+    ConfigResource,
+    NewPartitions,
+)
+from fastapi import HTTPException, Request
+
 from app.logger import logger
 from app.models.api.v1.requests.topic import (
-    IncreaseNumberOfPartitionsRequest,
     AlterTopicConfigsRequest,
+    IncreaseNumberOfPartitionsRequest,
 )
+
+from .topic_route import topic_router
 
 
 @topic_router.put(
