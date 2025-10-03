@@ -40,6 +40,9 @@ def describe_cluster(requst: Request) -> DescribeClusterResult:
     future: Future[DescribeClusterResult] = admin_client.describe_cluster()
     try:
         describe_cluster = future.result()
+        logger.bind(bootstrap_servers=bootstrap_servers).success(
+            "Describe cluster operation was successfull"
+        )
     except KafkaException as e:
         logger.bind(bootstrap_servers=bootstrap_servers).error(
             f"Error describing cluster: {e}"
