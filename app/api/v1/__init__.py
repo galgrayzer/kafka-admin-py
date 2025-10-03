@@ -13,7 +13,7 @@ from app.api.v1.swagger_docs import (
     docs_kafka_username,
 )
 
-from .endpoints import topic_router, cluster_router
+from .endpoints import topic_router, cluster_router, acls_router
 
 v1_router = APIRouter(
     prefix="/v1",
@@ -30,5 +30,6 @@ v1_router = APIRouter(
 # Include routers
 v1_router.include_router(topic_router)
 v1_router.include_router(cluster_router)
+v1_router.include_router(acls_router)
 
 __all__ = ["v1_router"]
