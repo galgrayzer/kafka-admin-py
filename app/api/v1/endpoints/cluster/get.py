@@ -30,7 +30,7 @@ def get_topics(request: Request) -> list[str]:
 
 
 @cluster_router.get("/describe-cluster", summary="Describe the Kafka Cluster")
-def describe_cluster(requst: Request):
+def describe_cluster(requst: Request) -> DescribeClusterResult:
     admin_client: AdminClient = requst.state.kafka_client.get_admin_client()
     bootstrap_servers: str = requst.state.bootstrap_servers
 
