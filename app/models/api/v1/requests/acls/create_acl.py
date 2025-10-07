@@ -18,8 +18,12 @@ class CreateACLRequest(BaseModel):
         default="*", description="The host that the call is allowed to come from."
     )
     operation: AclOperation = Field(
-        description="The operation/s specified by this binding."
+        description="The operation/s specified by this binding.",
+        default=AclOperation.READ,
+        examples=[AclOperation.READ, AclOperation.WRITE, AclOperation.ALL],
     )
     permission_type: AclPermissionType = Field(
-        description="The permission type for the specified operation."
+        description="The permission type for the specified operation.",
+        default=AclPermissionType.ALLOW,
+        examples=[AclPermissionType.ALLOW, AclPermissionType.DENY],
     )
