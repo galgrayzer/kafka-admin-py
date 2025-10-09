@@ -11,5 +11,5 @@ def extract_bootstrap_servers(request: Request) -> None:
         logger.debug(f"Extracted bootstrap servers: {bootstrap_servers}")
     else:
         raise HTTPException(
-            status_code=400, detail="Missing 'bootstrap_server' query parameter."
+            status_code=400, detail="Missing 'bootstrap_servers' query parameter."
         )
