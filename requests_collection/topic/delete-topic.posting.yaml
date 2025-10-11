@@ -1,0 +1,9 @@
+name: Delete Topic
+method: DELETE
+url: http://localhost:3000/api/v1/topic/gal-test
+headers:
+  - name: content-type
+    value: application/json
+params:
+  - name: bootstrap_servers
+    value: localhost:9092

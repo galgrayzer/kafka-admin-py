@@ -1,0 +1,5 @@
+name: Describe Cluster
+url: http://localhost:3000/api/v1/cluster/describe-cluster
+params:
+  - name: bootstrap_servers
+    value: localhost:9092

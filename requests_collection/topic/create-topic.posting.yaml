@@ -1,0 +1,17 @@
+name: Create Topic
+method: POST
+url: http://localhost:3000/api/v1/topic/gal-test
+body:
+  content: |-
+    {
+     "num_partitions": 10,
+     "replication_factor": 3,
+     "config": {}
+    }
+  content_type: application/json
+headers:
+  - name: content-type
+    value: application/json
+params:
+  - name: bootstrap_servers
+    value: localhost:9092
